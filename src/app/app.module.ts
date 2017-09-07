@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { InboxComponent } from './inbox/inbox.component';
+
+import { MailService } from "./mail.service";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InboxComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,40 @@
+#inbox {
+    width: 100%;
+    padding-left: 0;
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+.message-list-item {
+    margin: 5px;
+    transition: background .25s;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    display: block;
+}
+
+.message-list-item:hover{
+    background: rgba(225, 225, 225, 0.5);
+}
+
+.message-list-item.is-selected {
+    border: 1px solid black;
+}
+
+.message-list-item span{
+    display: inline-block;
+    padding: 0 2px;
+}
+
+.message-list-item .date-sent {
+    width: 15%;
+}
+.message-list-item .recipient,
+.message-list-item .sender {
+    border-right: 1px solid black;
+    width: 24%;
+}
+.message-list-item .subject{
+    width: 50%;
+    border-right: 1px solid black;
+}
