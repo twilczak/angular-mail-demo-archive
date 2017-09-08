@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from "rxjs/Observable";
-
-import { MailService } from "../mail.service";
 import { MailMessage } from "../mail-message";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'mailbox',
@@ -11,12 +9,22 @@ import { MailMessage } from "../mail-message";
   styleUrls: ['./mailbox.component.css']
 })
 export class MailboxComponent implements OnInit {
-  messages: Observable<MailMessage[]>;
-  constructor(private mailService: MailService) { }
+
+  messages: MailMessage[];
+
+  constructor( private route: ActivatedRoute ) { }
 
   ngOnInit() {
-    this.messages = this.mailService.getInboxMessages();
-    console.log(this.messages);
+    this.route.data.subscribe((data: { messages: MailMessage[] }) => {
+      this.messages = data.messages;
+    });
   }
 
+  inboxActive() : boolean {
+    return this.route.snapshot.url[0].path === 'inbox';
+  }
+
+  outboxActive() : boolean {
+    return this.route.snapshot.url[0].path === 'outbox';
+  }
 }
