@@ -1,5 +1,5 @@
-<ol id="inbox">
-  <li class="message-list-item" *ngFor="let message of messages | async">
+<ol class="mailbox">
+  <li class="mailbox-list-item" *ngFor="let message of messages | async">
     <span class="sender">{{message.sender}}</span>
     <span class="subject">{{message.subject}}</span>
     <span class="date-sent">{{message.dateSent}}</span>
