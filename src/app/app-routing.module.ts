@@ -12,11 +12,13 @@ const routes = [
   { path: '', redirectTo: '/inbox', pathMatch: 'full'},
   { path: 'inbox', component: MailboxComponent, resolve: { messages: InboxResolver },
     children: [
+      { path: 'view', redirectTo: '/inbox', pathMatch: 'full'},
       { path: 'view/:messageId', component: MessageReaderComponent, resolve: { message: InboxMessageResolver } }
     ]
   },
   { path: 'outbox', component: MailboxComponent, resolve: { messages: OutboxResolver },
     children: [
+      { path: 'view', redirectTo: '/outbox', pathMatch: 'full'},
       { path: 'view/:messageId', component: MessageReaderComponent, resolve: { message: OutboxMessageResolver} }
     ]
   }

@@ -1,6 +1,7 @@
 .mailbox {
     display: grid;
     grid-template-columns: 160px auto;
+    padding: 10px;
 }
 
 .mailbox-list {
@@ -43,9 +44,22 @@
     }
 }
 
+.mailbox-item-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+
+    &.is-active {
+        color: dodgerblue;
+    }
+}
+
 .mailbox-list-item,
 .mailbox-list-header {
-    & > * {
+    & .date-sent,
+    & .recipient,
+    & .sender,
+    & .subject {
         display: inline-block;
         padding: 5px;
     }
