@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'mailbox',
   templateUrl: './mailbox.component.html',
-  styleUrls: ['./mailbox.component.css']
+  styleUrls: ['./mailbox.component.scss']
 })
 export class MailboxComponent implements OnInit {
 
