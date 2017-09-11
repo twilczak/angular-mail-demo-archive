@@ -6,19 +6,25 @@ import { MessageReaderComponent } from "./message-reader/message-reader.componen
 import { InboxResolver } from "./mailbox/inbox.resolver";
 import { InboxMessageResolver } from "./message-reader/inbox-message.resolver";
 import { OutboxResolver } from "./mailbox/outbox.resolver";
+import { OutboxMessageResolver} from "./message-reader/outbox-message.resolver";
 
 const routes = [
   { path: '', redirectTo: '/inbox', pathMatch: 'full'},
   { path: 'inbox', component: MailboxComponent, resolve: { messages: InboxResolver },
     children: [
       { path: 'view/:messageId', component: MessageReaderComponent, resolve: { message: InboxMessageResolver } }
-    ] },
-  { path: 'outbox', component: MailboxComponent, resolve: { messages: OutboxResolver } }
+    ]
+  },
+  { path: 'outbox', component: MailboxComponent, resolve: { messages: OutboxResolver },
+    children: [
+      { path: 'view/:messageId', component: MessageReaderComponent, resolve: { message: OutboxMessageResolver} }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
-  providers: [ InboxResolver, InboxMessageResolver, OutboxResolver ]
+  providers: [ InboxResolver, InboxMessageResolver, OutboxResolver, OutboxMessageResolver ]
 })
 export class AppRoutingModule {}

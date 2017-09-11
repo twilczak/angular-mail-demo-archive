@@ -35,4 +35,12 @@ export class MailService {
       .get(url)
       .map(response => response.json() as MailMessage[]);
   }
+
+  getOutboxMessage(id) : Observable<MailMessage> {
+    const url = `${this.hostUrl}/outbox`;
+
+    return this.http
+      .get(url)
+      .map(response => response.json().find(message => message.id === id) as MailMessage);
+  }
 }
