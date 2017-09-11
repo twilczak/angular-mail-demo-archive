@@ -20,13 +20,5 @@ export class MessageReaderComponent implements OnInit {
       this.message = data.message;
     });
   }
-
-  inboxActive() : boolean {
-    return this.route.snapshot.url[0].path === 'inbox';
-  }
-
-  outboxActive() : boolean {
-    return this.route.snapshot.url[0].path === 'outbox';
-  }
-
+  
 }
