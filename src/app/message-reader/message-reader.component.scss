@@ -1,0 +1,15 @@
+:host {
+  grid-column: 2 / 3;
+  padding: 10px 15px;
+}
+
+.message-reader {
+  & > * {
+    padding: 5px;
+  }
+
+  & .label {
+    font-weight: 600;
+  }
+}
+

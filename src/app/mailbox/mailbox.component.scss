@@ -1,8 +1,6 @@
 .mailbox {
     display: grid;
     grid-template-columns: 160px auto;
-    border-bottom: 1px solid black;
-    border-radius: 2px;
 }
 
 .mailbox-list {
@@ -12,6 +10,7 @@
     list-style-position: inside;
     max-height: 205px;
     overflow-y: auto;
+    border-bottom: 1px solid black;
 }
 
 .mailbox-list-item,

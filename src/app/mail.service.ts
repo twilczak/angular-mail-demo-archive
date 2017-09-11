@@ -3,6 +3,7 @@ import { Http }       from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/find';
 
 import { MailMessage } from "./mail-message";
 
@@ -18,6 +19,14 @@ export class MailService {
       .get(url)
       .map(response => response.json() as MailMessage[]);
   };
+
+  getInboxMessage(id) : Observable<MailMessage> {
+    const url = `${this.hostUrl}/inbox`;
+
+    return this.http
+      .get(url)
+      .map(response => response.json().find(message => message.id === id) as MailMessage);
+  }
 
   getOutboxMessages() : Observable<MailMessage[]> {
     const url = `${this.hostUrl}/outbox`;
