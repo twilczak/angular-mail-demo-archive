@@ -9,7 +9,7 @@ import { MailboxComponent } from './mailbox/mailbox.component';
 import { MailService } from "./mail.service";
 import { MailboxControlsComponent } from './mailbox/mailbox-controls/mailbox-controls.component';
 import { MessageReaderComponent } from './message-reader/message-reader.component';
-import { MessageReaderControlsComponent } from "./message-reader/message-reader-controls/message-reader-controls.component";
+import { MessageControlsComponent } from "./message-controls/message-controls.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { MessageReaderControlsComponent } from "./message-reader/message-reader-
     MailboxComponent,
     MailboxControlsComponent,
     MessageReaderComponent,
-    MessageReaderControlsComponent
+    MessageControlsComponent
   ],
   imports: [
     AppRoutingModule,
