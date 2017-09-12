@@ -16,9 +16,7 @@ export class MessageReaderComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe( (data: { message: MailMessage}) => {
-      console.log('message', data);
       this.message = data.message;
     });
   }
-  
 }

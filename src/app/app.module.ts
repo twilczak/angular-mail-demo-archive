@@ -9,13 +9,15 @@ import { MailboxComponent } from './mailbox/mailbox.component';
 import { MailService } from "./mail.service";
 import { MailboxControlsComponent } from './mailbox/mailbox-controls/mailbox-controls.component';
 import { MessageReaderComponent } from './message-reader/message-reader.component';
+import { MessageReaderControlsComponent } from "./message-reader/message-reader-controls/message-reader-controls.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MailboxComponent,
     MailboxControlsComponent,
-    MessageReaderComponent
+    MessageReaderComponent,
+    MessageReaderControlsComponent
   ],
   imports: [
     AppRoutingModule,
