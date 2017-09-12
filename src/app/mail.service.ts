@@ -4,6 +4,8 @@ import { Http }       from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/find';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 
 import { MailMessage } from "./mail-message";
 
@@ -17,15 +19,18 @@ export class MailService {
 
     return this.http
       .get(url)
-      .map(response => response.json() as MailMessage[]);
+      .map(response => response.json() as MailMessage[])
+      .catch(this.handleError);
   };
 
-  getInboxMessage(id) : Observable<MailMessage> {
+  getInboxMessage(id: string) : Observable<MailMessage> {
     const url = `${this.hostUrl}/inbox`;
 
     return this.http
       .get(url)
-      .map(response => response.json().find(message => message.id === id) as MailMessage);
+      .map(response => response.json().find(message => message.id === id) as MailMessage).catch(this.handleError)
+      .catch(this.handleError);
+
   }
 
   getOutboxMessages() : Observable<MailMessage[]> {
@@ -33,14 +38,30 @@ export class MailService {
 
     return this.http
       .get(url)
-      .map(response => response.json() as MailMessage[]);
+      .map(response => response.json() as MailMessage[])
+      .catch(this.handleError);
   }
 
-  getOutboxMessage(id) : Observable<MailMessage> {
+  getOutboxMessage(id: string) : Observable<MailMessage> {
     const url = `${this.hostUrl}/outbox`;
 
     return this.http
       .get(url)
-      .map(response => response.json().find(message => message.id === id) as MailMessage);
+      .map(response => response.json().find(message => message.id === id) as MailMessage)
+      .catch(this.handleError);
+  }
+
+  deleteMessage(mailbox: string, id: string) {
+    const url = `${this.hostUrl}/${mailbox}/${id}`;
+
+    return this.http
+      .delete(url)
+      .map(res => res)
+      .catch(this.handleError);
+  }
+
+  handleError(e) {
+    console.error(e);
+    return Observable.throw(new Error(e));
   }
 }

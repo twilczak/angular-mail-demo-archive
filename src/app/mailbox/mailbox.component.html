@@ -10,7 +10,7 @@
       <span class="date-sent">Date</span>
     </li>
 
-    <li class="mailbox-list-item" *ngFor="let message of messages">
+    <li class="mailbox-list-item" *ngFor="let message of mailbox.messages">
       <a class="mailbox-item-link" [routerLink]="['view', message.id]" routerLinkActive="is-active">
         <span class="recipient" *ngIf="outboxActive()">{{message.recipient}}</span>
         <span class="sender" *ngIf="inboxActive()">{{message.sender}}</span>

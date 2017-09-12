@@ -1,5 +1,5 @@
 export class MailMessage {
-  id: number = null;
+  id: string = null;
   subject: string = '';
   sender: string = '';
   recipient: string = '';

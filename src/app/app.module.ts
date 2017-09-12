@@ -7,6 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { MailboxComponent } from './mailbox/mailbox.component';
 
 import { MailService } from "./mail.service";
+import { Mailbox } from "./mailbox.service";
 import { MailboxControlsComponent } from './mailbox/mailbox-controls/mailbox-controls.component';
 import { MessageReaderComponent } from './message-reader/message-reader.component';
 import { MessageControlsComponent } from "./message-controls/message-controls.component";
@@ -25,7 +26,8 @@ import { MessageControlsComponent } from "./message-controls/message-controls.co
     HttpModule
   ],
   providers: [
-    MailService
+    MailService,
+    Mailbox
   ],
   bootstrap: [AppComponent]
 })

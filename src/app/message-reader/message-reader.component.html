@@ -1,5 +1,5 @@
-<message-controls></message-controls>
-<div class="message-reader">
+<message-controls *ngIf="message"></message-controls>
+<div class="message-reader" *ngIf="message">
   <div class="recipient"><span class="label">To:</span> {{message.recipient}}</div>
   <div class="sender"><span class="label">From:</span> {{message.sender}} </div>
   <div class="date-sent"><span class="label">Sent:</span> {{message.dateSent}} </div>

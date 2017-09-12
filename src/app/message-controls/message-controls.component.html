@@ -1,5 +1,5 @@
 <div class="message-controls">
   <a class="message-button" id="compose-button">Compose</a>
-  <button class="message-button" id="delete-button" disabled="disabled">Delete</button>
+  <button class="message-button" id="delete-button" (click)="delete()" (disabled)="deleteDisabled()">Delete</button>
   <button class="message-button" id="send-button" disabled="disabled">Send</button>
 </div>

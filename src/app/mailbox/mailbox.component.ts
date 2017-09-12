@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MailMessage } from "../mail-message";
 import { ActivatedRoute } from "@angular/router";
+import {Mailbox} from "../mailbox.service";
 
 @Component({
   selector: 'mailbox',
@@ -10,21 +11,24 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class MailboxComponent implements OnInit {
 
-  messages: MailMessage[];
+  mailbox: Mailbox;
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute, mailbox: Mailbox ) {
+    this.mailbox = mailbox;
+  }
 
   ngOnInit() {
     this.route.data.subscribe((data: { messages: MailMessage[] }) => {
-      this.messages = data.messages;
+      this.mailbox.name = this.route.snapshot.url[0].path;
+      this.mailbox.messages = data.messages;
     });
   }
 
   inboxActive() : boolean {
-    return this.route.snapshot.url[0].path === 'inbox';
+    return this.mailbox.name === 'inbox';
   }
 
   outboxActive() : boolean {
-    return this.route.snapshot.url[0].path === 'outbox';
+    return this.mailbox.name === 'outbox';
   }
 }
