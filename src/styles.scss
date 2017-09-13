@@ -10,6 +10,10 @@ a {
     text-decoration: none;
 }
 
+.message-controls {
+    padding-top: 10px;
+}
+
 .message-button {
     margin: 5px;
     padding: 10px;
@@ -22,10 +26,6 @@ a {
     text-align: center;
     font-family: inherit;
     font-size: inherit;
-}
-
-a.message-button {
-    width: 130px;
 }
 
 .message-button:hover {
