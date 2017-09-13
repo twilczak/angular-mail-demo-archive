@@ -65,12 +65,7 @@ export class MailService {
 
     return this.http
       .post(url, message)
-      .map(res => {
-        let json = res.json();
-        console.log(json);
-        return json as MailMessage
-      })
-      // .map(res => console.log(res.json()))
+      .map(res => res.json() as MailMessage)
       .catch(this.handleError);
   }
 
