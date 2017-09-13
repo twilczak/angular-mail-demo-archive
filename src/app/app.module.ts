@@ -11,7 +11,6 @@ import { MailService } from "./mail.service";
 import { Mailbox } from "./mailbox.service";
 import { MailboxControlsComponent } from './mailbox/mailbox-controls/mailbox-controls.component';
 import { MessageReaderComponent } from './message-reader/message-reader.component';
-import { MessageControlsComponent } from "./message-controls/message-controls.component";
 import { MessageComposerComponent } from './message-composer/message-composer.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { MessageComposerComponent } from './message-composer/message-composer.co
     MailboxComponent,
     MailboxControlsComponent,
     MessageReaderComponent,
-    MessageControlsComponent,
     MessageComposerComponent
   ],
   imports: [
