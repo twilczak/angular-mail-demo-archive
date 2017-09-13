@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 import { MailMessage } from "../mail-message";
 import { Mailbox } from "../mailbox.service";
@@ -15,6 +16,7 @@ export class MessageControlsComponent implements OnInit {
 
   mailbox: Mailbox;
   message: MailMessage;
+  @Input() newMessageForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private mailService: MailService, private router: Router, mailbox: Mailbox) {
     this.mailbox = mailbox;
@@ -27,7 +29,7 @@ export class MessageControlsComponent implements OnInit {
   }
 
   deleteDisabled() {
-    return !! this.message;
+    return !this.message;
   }
 
   composing() {
@@ -47,5 +49,27 @@ export class MessageControlsComponent implements OnInit {
   cancel() {
     let mailbox: string = this.route.snapshot.parent.url[0].path;
     this.router.navigateByUrl(mailbox);
+  }
+
+  sendDisabled() {
+    return this.newMessageForm.status !== 'VALID';
+  }
+
+  send() {
+    let dateSent = new Date();
+    let message = new MailMessage();
+    message.sender = 'Me';
+    message.recipient = this.newMessageForm.value.recipient;
+    message.subject = this.newMessageForm.value.subject;
+    message.setDateSent(dateSent);
+
+    this.mailService.sendMessage(message).subscribe((message) => {
+      if(this.mailbox.name === 'outbox') {
+        this.mailbox.messages.push(message);
+        this.router.navigateByUrl(`outbox/view/${message.id}`);
+      } else {
+        this.router.navigateByUrl(`inbox`);
+      }
+    });
   }
 }

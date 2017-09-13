@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'message-composer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComposerComponent implements OnInit {
 
-  constructor() { }
+  messageForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.messageForm = this.formBuilder.group({
+      recipient: ['', Validators.required],
+      subject: ['', Validators.required],
+      body: ['', Validators.required]
+    });
   }
-
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "./app-routing.module";
@@ -25,6 +26,7 @@ import { MessageComposerComponent } from './message-composer/message-composer.co
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ReactiveFormsModule,
     HttpModule
   ],
   providers: [

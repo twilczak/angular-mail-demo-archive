@@ -1,10 +1,10 @@
 <div class="message-controls">
   <span *ngIf="!composing()">
-    <button class="message-button" (click)="delete()" (disabled)="deleteDisabled()">Delete</button>
+    <button class="message-button" (click)="delete()" [disabled]="deleteDisabled()">Delete</button>
     <button class="message-button" disabled="disabled">Reply</button>
   </span>
   <span *ngIf="composing()">
     <button class="message-button" (click)="cancel()">Cancel</button>
-    <button class="message-button">Send</button>
+    <button class="message-button" (click)="send()" [disabled]="sendDisabled()">Send</button>
   </span>
 </div>

@@ -1,6 +1,6 @@
-<message-controls></message-controls>
-<div class="message-composer">
-    <input class="composer-input" placeholder="recipient" type="text"/>
-    <input class="composer-input" placeholder="subject" type="text"/>
-    <textarea class="composer-input" placeholder="body" rows="10"></textarea>
-</div>
+<message-controls [newMessageForm]="messageForm"></message-controls>
+<form class="message-composer" [formGroup]="messageForm" novalidate>
+    <input class="composer-input" placeholder="recipient" type="text" formControlName="recipient"/>
+    <input class="composer-input" placeholder="subject" type="text" formControlName="subject"/>
+    <textarea class="composer-input" placeholder="body" rows="10" formControlName="body"></textarea>
+</form>

@@ -18,4 +18,12 @@
   border-left-color: transparent;
   border-right-color: transparent;
   width: 100%;
+
+  &.ng-dirty.ng-touched.ng-invalid {
+    border-bottom-color: red;
+  }
+
+  &.ng-dirty.ng-touched.ng-invalid::-webkit-input-placeholder {
+    color: rgba(255, 0, 0, 0.6);
+  }
 }
