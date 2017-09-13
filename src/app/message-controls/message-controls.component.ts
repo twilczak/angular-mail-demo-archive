@@ -13,9 +13,12 @@ import { MailService } from "../mail.service";
 })
 export class MessageControlsComponent implements OnInit {
 
+  mailbox: Mailbox;
   message: MailMessage;
 
-  constructor(private route: ActivatedRoute, private mailService: MailService, private router: Router, private mailbox: Mailbox) { }
+  constructor(private route: ActivatedRoute, private mailService: MailService, private router: Router, mailbox: Mailbox) {
+    this.mailbox = mailbox;
+  }
 
   ngOnInit() {
     this.route.data.subscribe((data: {message: MailMessage}) => {
@@ -27,13 +30,22 @@ export class MessageControlsComponent implements OnInit {
     return !! this.message;
   }
 
+  composing() {
+    return this.route.snapshot.url[0].path === 'compose';
+  }
+
   delete() {
     let mailbox: string = this.route.snapshot.parent.url[0].path;
     let id : string = this.message.id;
 
     this.mailService.deleteMessage(mailbox, id).subscribe(() => {
       this.mailbox.delete(id);
-      this.router.navigateByUrl(`${mailbox}`);
+      this.router.navigateByUrl(mailbox);
     });
+  }
+
+  cancel() {
+    let mailbox: string = this.route.snapshot.parent.url[0].path;
+    this.router.navigateByUrl(mailbox);
   }
 }

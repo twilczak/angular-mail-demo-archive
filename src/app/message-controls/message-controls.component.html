@@ -1,5 +1,10 @@
 <div class="message-controls">
-  <a class="message-button" id="compose-button">Compose</a>
-  <button class="message-button" id="delete-button" (click)="delete()" (disabled)="deleteDisabled()">Delete</button>
-  <button class="message-button" id="send-button" disabled="disabled">Send</button>
+  <span *ngIf="!composing()">
+    <button class="message-button" (click)="delete()" (disabled)="deleteDisabled()">Delete</button>
+    <button class="message-button" disabled="disabled">Reply</button>
+  </span>
+  <span *ngIf="composing()">
+    <button class="message-button" (click)="cancel()">Cancel</button>
+    <button class="message-button">Send</button>
+  </span>
 </div>
