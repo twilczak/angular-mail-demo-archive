@@ -1,14 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute } from '@angular/router';
 
 import { MailboxComponent } from './mailbox.component';
+import { MailboxControlsComponent } from "./mailbox-controls/mailbox-controls.component";
+import { Mailbox } from '../mailbox.service'
 
-describe('MailComponent', () => {
+describe('MailboxComponent', () => {
   let component: MailboxComponent;
   let fixture: ComponentFixture<MailboxComponent>;
 
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
-      declarations: [ MailboxComponent ]
+      declarations: [ MailboxComponent, MailboxControlsComponent ],
+      imports: [ RouterTestingModule ],
+      providers: [ Mailbox ]
     })
     .compileComponents();
   }));
