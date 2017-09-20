@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MailMessage } from "../mail-message";
 import { ActivatedRoute } from "@angular/router";
-import {Mailbox} from "../mailbox.service";
+import { Mailbox } from "../mailbox.service";
 
 @Component({
   selector: 'mailbox',
@@ -18,8 +18,10 @@ export class MailboxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.url.subscribe(url => {
+      this.mailbox.name = url[0].path;
+    });
     this.route.data.subscribe((data: { messages: MailMessage[] }) => {
-      this.mailbox.name = this.route.snapshot.url[0].path;
       this.mailbox.messages = data.messages;
     });
   }

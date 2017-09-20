@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MessageComposerComponent } from './message-composer.component';
+import { Mailbox } from "../mailbox.service";
+import { MailService } from "../mail.service";
+
+class MockMailService extends MailService {
+  constructor(){
+    super(null);
+  }
+}
 
 describe('MessageComposerComponent', () => {
   let component: MessageComposerComponent;
@@ -8,7 +18,9 @@ describe('MessageComposerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageComposerComponent ]
+      imports: [ ReactiveFormsModule, FormsModule, RouterTestingModule ],
+      declarations: [ MessageComposerComponent ],
+      providers: [ Mailbox, {provide: MailService, useValue: new MockMailService()} ]
     })
     .compileComponents();
   }));
