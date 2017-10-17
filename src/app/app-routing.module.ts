@@ -1,13 +1,13 @@
-import { NgModule} from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { NgModule} from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { MailboxComponent } from "./mailbox/mailbox.component";
-import { MessageReaderComponent } from "./message-reader/message-reader.component";
-import { InboxResolver } from "./mailbox/inbox.resolver";
-import { InboxMessageResolver } from "./message-reader/inbox-message.resolver";
-import { OutboxResolver } from "./mailbox/outbox.resolver";
-import { OutboxMessageResolver} from "./message-reader/outbox-message.resolver";
-import { MessageComposerComponent } from "./message-composer/message-composer.component";
+import { MailboxComponent } from './mailbox/mailbox.component';
+import { MessageReaderComponent } from './message-reader/message-reader.component';
+import { InboxResolver } from './mailbox/inbox.resolver';
+import { InboxMessageResolver } from './message-reader/inbox-message.resolver';
+import { OutboxResolver } from './mailbox/outbox.resolver';
+import { OutboxMessageResolver} from './message-reader/outbox-message.resolver';
+import { MessageComposerComponent } from './message-composer/message-composer.component';
 
 const routes = [
   { path: '', redirectTo: '/inbox', pathMatch: 'full'},

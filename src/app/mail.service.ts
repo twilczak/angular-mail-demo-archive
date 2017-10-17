@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http }       from '@angular/http';
+import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -7,23 +7,23 @@ import 'rxjs/add/operator/find';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-import { MailMessage } from "./mail-message";
+import { MailMessage } from './mail-message';
 
 @Injectable()
 export class MailService {
   private hostUrl =  'http://localhost:3000';
   constructor(private http: Http) { }
 
-  getInboxMessages() : Observable<MailMessage[]> {
+  getInboxMessages(): Observable<MailMessage[]> {
     const url = `${this.hostUrl}/inbox`;
 
     return this.http
       .get(url)
       .map(response => response.json() as MailMessage[])
       .catch(this.handleError);
-  };
+  }
 
-  getInboxMessage(id: string) : Observable<MailMessage> {
+  getInboxMessage(id: string): Observable<MailMessage> {
     const url = `${this.hostUrl}/inbox`;
 
     return this.http
@@ -33,7 +33,7 @@ export class MailService {
 
   }
 
-  getOutboxMessages() : Observable<MailMessage[]> {
+  getOutboxMessages(): Observable<MailMessage[]> {
     const url = `${this.hostUrl}/outbox`;
 
     return this.http
@@ -42,7 +42,7 @@ export class MailService {
       .catch(this.handleError);
   }
 
-  getOutboxMessage(id: string) : Observable<MailMessage> {
+  getOutboxMessage(id: string): Observable<MailMessage> {
     const url = `${this.hostUrl}/outbox`;
 
     return this.http
@@ -60,7 +60,7 @@ export class MailService {
       .catch(this.handleError);
   }
 
-  sendMessage(message: MailMessage) : Observable<MailMessage> {
+  sendMessage(message: MailMessage): Observable<MailMessage> {
     const url = `${this.hostUrl}/outbox`;
 
     return this.http

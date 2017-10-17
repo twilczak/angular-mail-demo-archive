@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { MailMessage } from "../mail-message";
-import { Mailbox } from "../mailbox.service";
-import { MailService } from "../mail.service";
+import { MailMessage } from '../mail-message';
+import { Mailbox } from '../mailbox.service';
+import { MailService } from '../mail.service';
 
 @Component({
   selector: 'message-reader',
@@ -27,8 +27,8 @@ export class MessageReaderComponent implements OnInit {
   }
 
   deleteMessage() {
-    let mailbox: string = this.route.snapshot.parent.url[0].path;
-    let id : string = this.message.id;
+    const mailbox: string = this.route.snapshot.parent.url[0].path;
+    const id: string = this.message.id;
 
     this.mailService.deleteMessage(mailbox, id).subscribe(() => {
       this.mailbox.delete(id);

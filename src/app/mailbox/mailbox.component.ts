@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MailMessage } from "../mail-message";
-import { ActivatedRoute } from "@angular/router";
-import { Mailbox } from "../mailbox.service";
+import { MailMessage } from '../mail-message';
+import { ActivatedRoute } from '@angular/router';
+import { Mailbox } from '../mailbox.service';
 
 @Component({
   selector: 'mailbox',
@@ -26,11 +26,11 @@ export class MailboxComponent implements OnInit {
     });
   }
 
-  inboxActive() : boolean {
+  inboxActive(): boolean {
     return this.mailbox.name === 'inbox';
   }
 
-  outboxActive() : boolean {
+  outboxActive(): boolean {
     return this.mailbox.name === 'outbox';
   }
 }

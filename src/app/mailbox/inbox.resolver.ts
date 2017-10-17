@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
-import { MailService } from "../mail.service";
-import { MailMessage } from "../mail-message";
+import { MailService } from '../mail.service';
+import { MailMessage } from '../mail-message';
 
 @Injectable()
 export class InboxResolver implements Resolve<MailMessage[]> {

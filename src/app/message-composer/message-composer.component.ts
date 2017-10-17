@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MailMessage } from "../mail-message";
-import { Mailbox } from "../mailbox.service";
-import { MailService } from "../mail.service";
+import { MailMessage } from '../mail-message';
+import { Mailbox } from '../mailbox.service';
+import { MailService } from '../mail.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class MessageComposerComponent implements OnInit {
   }
 
   cancel() {
-    let mailbox: string = this.route.snapshot.parent.url[0].path;
+    const mailbox: string = this.route.snapshot.parent.url[0].path;
     this.router.navigateByUrl(mailbox);
   }
 
@@ -37,15 +37,15 @@ export class MessageComposerComponent implements OnInit {
   }
 
   send() {
-    let dateSent = new Date();
-    let message = new MailMessage();
+    const dateSent = new Date();
+    const message = new MailMessage();
     message.sender = 'Me';
     message.recipient = this.messageForm.value.recipient;
     message.subject = this.messageForm.value.subject;
     message.setDateSent(dateSent);
 
     this.mailService.sendMessage(message).subscribe((message) => {
-      if(this.mailbox.name === 'outbox') {
+      if (this.mailbox.name === 'outbox') {
         this.mailbox.messages.push(message);
         this.router.navigateByUrl(`outbox/view/${message.id}`);
       } else {

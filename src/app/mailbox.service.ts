@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MailMessage } from "./mail-message";
+import { MailMessage } from './mail-message';
 
 @Injectable()
 export class Mailbox {
@@ -8,7 +8,7 @@ export class Mailbox {
   messages: MailMessage[];
 
   delete(id: string) {
-    let i = this.messages.findIndex(el => el.id === id );
+    const i = this.messages.findIndex(el => el.id === id );
     this.messages.splice(i, 1);
   }
 }
