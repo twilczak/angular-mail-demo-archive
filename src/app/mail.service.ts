@@ -28,7 +28,7 @@ export class MailService {
 
     return this.http
       .get(url)
-      .map(response => response.json().find(message => message.id === id) as MailMessage).catch(this.handleError)
+      .map(response => response.json().find(message => message.id === id) as MailMessage)
       .catch(this.handleError);
 
   }
