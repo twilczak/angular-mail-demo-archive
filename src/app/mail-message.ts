@@ -10,6 +10,7 @@ export class MailMessage {
     return value > 9 ?  '' + value : '0' + value;
   }
 
+  // TODO: move display to pipe
   setDateSent(date: Date = new Date()) {
     const day = MailMessage.zeroPad(date.getDate());
     const month = MailMessage.zeroPad(date.getMonth());
