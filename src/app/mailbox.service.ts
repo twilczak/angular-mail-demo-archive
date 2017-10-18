@@ -7,7 +7,7 @@ export class Mailbox {
   name: string;
   messages: MailMessage[];
 
-  delete(id: string) {
+  deleteMessage(id: string) {
     const i = this.messages.findIndex(el => el.id === id );
     this.messages.splice(i, 1);
   }

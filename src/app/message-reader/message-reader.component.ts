@@ -31,7 +31,7 @@ export class MessageReaderComponent implements OnInit {
     const id: string = this.message.id;
 
     this.mailService.deleteMessage(mailbox, id).subscribe(() => {
-      this.mailbox.delete(id);
+      this.mailbox.deleteMessage(id);
       this.router.navigateByUrl(mailbox);
     });
   }
