@@ -44,10 +44,10 @@ export class MessageComposerComponent implements OnInit {
     message.subject = this.messageForm.value.subject;
     message.setDateSent(dateSent);
 
-    this.mailService.sendMessage(message).subscribe((message) => {
+    this.mailService.sendMessage(message).subscribe((response) => {
       if (this.mailbox.name === 'outbox') {
-        this.mailbox.messages.push(message);
-        this.router.navigateByUrl(`outbox/view/${message.id}`);
+        this.mailbox.messages.push(response);
+        this.router.navigateByUrl(`outbox/view/${response.id}`);
       } else {
         this.router.navigateByUrl(`inbox`);
       }
